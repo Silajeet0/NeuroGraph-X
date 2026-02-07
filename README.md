@@ -1,32 +1,142 @@
-# NeuroGraph-X: A Hybrid CNN-GNN Framework for Alzheimer's Detection
+# NeuroGraph-X
 
-[cite_start]**Authors:** Sagnik Pal [cite: 2][cite_start], Silajeet Banerjee [cite: 3]  
-[cite_start]**Date:** February 7, 2026 [cite: 4]
+**NeuroGraph-X** is a machine learning research project exploring neural architectures on graph-structured data.  
+The goal of this repository is to build, experiment with, and evaluate models that combine deep learning with graph representations for advanced pattern discovery and inference.
 
-## 🧠 Project Overview
-[cite_start]NeuroGraph-X is a hybrid deep learning framework designed to detect Alzheimer's Disease (AD) from structural MRI scans while providing natural language explanations for its predictions[cite: 7]. 
+---
 
-[cite_start]Unlike traditional "black-box" CNNs, this project models the brain as a graph connectome and uses a Large Language Model (LLM) to translate technical findings into clinically meaningful reports[cite: 11].
+## 🚀 Project Overview
 
-## 🏗️ Architecture
-[cite_start]The framework consists of two main modules[cite: 27]:
+Graph-based learning is central to many modern AI applications — social networks, molecular modeling, recommendation systems, and knowledge graphs.
 
-### Module A: Vision & Graph Learning
-1.  [cite_start]**3D Feature Extraction:** Uses a 3D CNN (e.g., ResNet/DenseNet) to extract features from MRI volumes preprocessed with MONAI[cite: 29, 30].
-2.  [cite_start]**Brain Graph Construction:** Maps brain regions (nodes) using the AAL atlas and models connectivity (edges) based on feature similarity[cite: 31, 33].
-3.  [cite_start]**GNN Classification:** A Graph Attention Network (GAT) classifies subjects as AD or Healthy, learning attention weights for critical connections[cite: 35, 37].
+NeuroGraph-X aims to:
 
-### Module B: Explainability
-1.  [cite_start]**Symbolic Extraction:** Identifies the top-k disrupted brain connections based on GNN attention weights[cite: 39].
-2.  [cite_start]**LLM Generation:** A local LLM (Mistral-7B/LLaMA-3) generates a clinical narrative explaining *why* the model made its prediction[cite: 41, 42].
+- Develop neural models operating on graph structures  
+- Experiment with representation learning techniques  
+- Analyze performance on structured datasets  
+- Provide modular experimentation infrastructure  
 
-## 📂 Directory Structure
-```text
-neurograph-x/
-├── data/               # Raw and processed MRI data (git-ignored)
-├── notebooks/          # Experimentation notebooks
-├── src/
-│   ├── vision/         # 3D CNN and MONAI pipelines
-│   ├── graph/          # PyTorch Geometric models
-│   └── explain/        # LangChain and LLM logic
-└── models/             # Saved model weights (git-ignored)
+This repository serves as a research sandbox and development base for future extensions.
+
+---
+
+## 🗂️ Repository Structure
+
+```
+NeuroGraph-X/
+│
+├── data/                # Dataset storage (kept empty / ignored)
+├── models/              # Model definitions
+├── experiments/         # Experiment scripts / configs
+├── notebooks/           # Jupyter notebooks for exploration
+├── utils/               # Helper utilities
+│
+├── requirements.txt     # Python dependencies
+├── README.md
+```
+
+> Empty directories contain `.gitkeep` so Git tracks them.
+
+---
+
+## ⚙️ Installation
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/Silajeet0/NeuroGraph-X.git
+cd NeuroGraph-X
+```
+
+### 2️⃣ Create virtual environment (recommended)
+
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+### 3️⃣ Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## ▶️ Usage
+
+Example workflow:
+
+```bash
+# Run experiments
+python experiments/run.py
+```
+
+or explore notebooks:
+
+```bash
+jupyter notebook notebooks/
+```
+
+(Adjust as scripts are added)
+
+---
+
+## 🧪 Development Goals
+
+- [ ] Implement baseline graph neural networks  
+- [ ] Add training pipeline  
+- [ ] Dataset integration  
+- [ ] Visualization tools  
+- [ ] Hyperparameter experimentation  
+- [ ] Benchmark evaluation  
+
+---
+
+## 🤝 Contributing
+
+Contributions, suggestions, and discussions are welcome.
+
+1. Fork the repo  
+2. Create a feature branch  
+3. Submit a Pull Request  
+
+---
+
+## 📜 License
+
+Specify your license here (MIT, Apache 2.0, etc.)
+
+Example:
+
+```
+MIT License
+```
+
+---
+
+## 👤 Author
+
+**Silajeet Banerjee**
+
+Computer Science Graduate  
+AI & Data Science Enthusiast  
+
+GitHub: https://github.com/Silajeet0
+
+---
+
+## ⭐ Acknowledgments
+
+- Open source ML community  
+- PyTorch / TensorFlow ecosystem  
+- Graph learning research literature  
+
+---
+

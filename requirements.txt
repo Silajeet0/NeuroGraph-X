@@ -1,0 +1,35 @@
+# --- Deep Learning & Core ---
+torch>=2.1.0
+torchvision
+numpy
+pandas
+scikit-learn
+matplotlib
+tqdm
+
+# --- Medical Imaging (Module A - Vision) ---
+# Used for preprocessing 3D MRI scans and atlas mapping 
+monai>=1.3.0
+nibabel>=5.1.0
+nilearn  # Useful for plotting brain volumes and atlas handling
+
+# --- Graph Neural Networks (Module A - Graph) ---
+# Required for implementing GAT/GraphSAGE [cite: 35]
+torch-geometric>=2.4.0
+
+# --- LLM & Explainability (Module B - NLP) ---
+# For orchestration and prompt management [cite: 41]
+langchain>=0.1.0
+langchain-community
+transformers>=4.36.0
+accelerate
+bitsandbytes  # For 4-bit/8-bit quantization of local LLMs
+sentencepiece
+
+# Optional: For running GGUF models locally (Llama-3/Mistral) [cite: 41]
+llama-cpp-python
+
+# --- Development & Notebooks ---
+jupyter
+ipykernel
+hydra-core 

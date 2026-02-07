@@ -88,20 +88,21 @@ pip install -r requirements.txt
 
 ## ▶️ Usage
 
-Preprocessing: Run the data pipeline to convert raw MRI scans into graph data.
+### Preprocessing: 
+Run the data pipeline to convert raw MRI scans into graph data.
 
 ```bash
 # Run experiments
 python scripts/run_pipeline.py --config configs/preprocessing.yaml
 ```
 
-## Training
+### Training
 Train the hybrid CNN-GNN model.
 
 ```bash
 python scripts/train_gnn.py --config configs/model_gnn.yaml
 ```
-## Generate Report: 
+### Generate Report: 
 Run inference on a sample scan to get the prediction and LLM explanation.
 ```bash
 python scripts/generate_report.py --input data/sample_scan.nii.gz

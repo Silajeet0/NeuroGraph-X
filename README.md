@@ -1,42 +1,59 @@
-# NeuroGraph-X
 
-**NeuroGraph-X** is a machine learning research project exploring neural architectures on graph-structured data.  
-The goal of this repository is to build, experiment with, and evaluate models that combine deep learning with graph representations for advanced pattern discovery and inference.
+
+**NeuroGraph-X**: A Hybrid CNN-GNN Framework for Alzheimer's Detection with Natural Language Explainability
+
+![Project Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-red)
 
 ---
+## 📄 Abstract
+Early detection of Alzheimer's Disease (AD) by neuroimaging remains a challenging problem due to the high dimensionality of brain data and the lack of clinically interpretable explanations. **NeuroGraph-X** is a hybrid deep learning framework that integrates 3D Convolutional Neural Networks (CNNs), Graph Neural Networks (GNNs), and Natural Language Processing (NLP) for accurate and explainable AD detection from structural MRI scans.
 
-## 🚀 Project Overview
+## 🏗️ Architecture
+The framework consists of two main modules
 
-Graph-based learning is central to many modern AI applications — social networks, molecular modeling, recommendation systems, and knowledge graphs.
+### Module A: Vision and Graph-Based Learning
+1.  **Feature Extraction:** - Structural T1-weighted 3D MRI scans are preprocessed using `MONAI` and `Nibabel`.
+    - A pretrained 3D CNN (e.g., 3D-ResNet or DenseNet) extracts high-level feature representations.
+    - **Atlas-based Parcellation:** Using the AAL brain atlas, we perform average pooling to produce fixed-length feature vectors for specific brain regions.
+2.  **Graph Construction:** - Each brain region is modeled as a **node**.
+    - **Edges** are defined based on feature similarity or physical distance, mimicking the brain's connectome.
+3.  **Graph Classification:** - A GNN (Graph Attention Network or GraphSAGE) implemented in `PyTorch Geometric` classifies the graph.
+    - **Attention Weights** are learned to highlight critical inter-regional connections.
 
-NeuroGraph-X aims to:
+### Module B: Natural Language Explainability
+1.  **Symbolic Extraction:** The top-k most affected edges are identified based on attention weight degradation.
+2.  **Language Generation:** - These symbolic findings are fed into a local Large Language Model (e.g., **Mistral-7B** or **LLaMA-3**) using `LangChain`.
+    - The LLM generates a clinically grounded explanation describing connectivity disruptions and their cognitive implications.
 
-- Develop neural models operating on graph structures  
-- Experiment with representation learning techniques  
-- Analyze performance on structured datasets  
-- Provide modular experimentation infrastructure  
-
-This repository serves as a research sandbox and development base for future extensions.
+## 🛠️ Tech Stack
+- **Core:** Python, PyTorch, NumPy, Pandas
+- **Medical Imaging:** MONAI, Nibabel, Nilearn
+- **Graph Learning:** PyTorch Geometric (PyG)
+- **LLM & NLP:** LangChain, HuggingFace Transformers, Llama-cpp-python (for local inference)
 
 ---
 
 ## 🗂️ Repository Structure
+```text
+neurograph-x/
+├── data/
+│   ├── raw/                  # Original MRI dataset (immutable)
+│   ├── processed/            # Skull-stripped/normalized tensors
+│   └── atlas/                # AAL atlas files
+│
+├── src/                      
+│   ├── preprocessing/        # MONAI pipelines & Atlas mapping
+│   ├── vision_module/        # 3D CNN Backbone & Feature Extractor
+│   ├── graph_module/         # GNN Models (GAT/GraphSAGE)
+│   └── explainability/       # LLM Prompting & LangChain Agents
+│
+├── notebooks/                # Jupyter notebooks for experimentation and data visualization
+├── configs/                  # Configuration files (YAML/Hydra)
+└── scripts/                  # Training and Inference scripts
 
 ```
-NeuroGraph-X/
-│
-├── data/                # Dataset storage (kept empty / ignored)
-├── models/              # Model definitions
-├── experiments/         # Experiment scripts / configs
-├── notebooks/           # Jupyter notebooks for exploration
-├── utils/               # Helper utilities
-│
-├── requirements.txt     # Python dependencies
-├── README.md
-```
-
-> Empty directories contain `.gitkeep` so Git tracks them.
-
 ---
 
 ## ⚙️ Installation
@@ -71,31 +88,24 @@ pip install -r requirements.txt
 
 ## ▶️ Usage
 
-Example workflow:
+Preprocessing: Run the data pipeline to convert raw MRI scans into graph data.
 
 ```bash
 # Run experiments
-python experiments/run.py
+python scripts/run_pipeline.py --config configs/preprocessing.yaml
 ```
 
-or explore notebooks:
+## Training
+Train the hybrid CNN-GNN model.
 
 ```bash
-jupyter notebook notebooks/
+python scripts/train_gnn.py --config configs/model_gnn.yaml
 ```
-
-(Adjust as scripts are added)
-
----
-
-## 🧪 Development Goals
-
-- [ ] Implement baseline graph neural networks  
-- [ ] Add training pipeline  
-- [ ] Dataset integration  
-- [ ] Visualization tools  
-- [ ] Hyperparameter experimentation  
-- [ ] Benchmark evaluation  
+## Generate Report: 
+Run inference on a sample scan to get the prediction and LLM explanation.
+```bash
+python scripts/generate_report.py --input data/sample_scan.nii.gz
+```
 
 ---
 
@@ -109,34 +119,20 @@ Contributions, suggestions, and discussions are welcome.
 
 ---
 
-## 📜 License
-
-Specify your license here (MIT, Apache 2.0, etc.)
-
-Example:
-
-```
-MIT License
-```
-
----
-
 ## 👤 Author
 
 **Silajeet Banerjee**
 
-Computer Science Graduate  
-AI & Data Science Enthusiast  
+Computer Science Graduate 
+M.Sc. Computer Science Student at RKMVERI
 
 GitHub: https://github.com/Silajeet0
 
----
+**Sagnik Pal**
 
-## ⭐ Acknowledgments
+Computer Science Graduate
+M.Sc. Computer Science Student at RKMVERI
 
-- Open source ML community  
-- PyTorch / TensorFlow ecosystem  
-- Graph learning research literature  
+Github: https://github.com/Sagnik-2004
 
----
 

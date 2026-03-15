@@ -1,0 +1,20 @@
+# --- DATASET EXCLUSIONS ---
+
+# Ignore the unzipped raw data folders
+ADNI_Raw_Data/
+ADNI_Raw_Data/ADNI/
+NeuroGraph_Raw_IDA_Metadata/
+
+# Ignore the final processed NIfTI data
+data/
+data/AD/
+data/CN/
+data/MCI/
+
+# Ignore the metadata CSVs (optional, but good practice)
+*.csv
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

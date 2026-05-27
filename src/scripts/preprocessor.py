@@ -1,8 +1,3 @@
-'''
-    script to preprocess the data
-    @author: Sagnik
-'''
-
 import os
 import subprocess
 from pathlib import Path

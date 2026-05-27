@@ -1,8 +1,3 @@
-'''
-    Script to generate ground truth labels for the GNN
-    @author: Silajeet
-'''
-
 import pandas as pd
 import os
 import re
